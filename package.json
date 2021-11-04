@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "FreeSWITCH modesl wrapper",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "doc": "typedoc",
     "purge": "rm -rf node_modules yarn.lock && yarn clean",
