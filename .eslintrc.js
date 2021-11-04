@@ -1,0 +1,60 @@
+module.exports = {
+    parser: "@typescript-eslint/parser",
+    ignorePatterns: ["**/*.js"],
+    env: {
+        "mocha": true,
+        "browser": true,
+        "node": true,
+        "commonjs": true,
+        "es6": true,
+    },    
+    extends: [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:sonarjs/recommended",
+        "prettier",
+        "prettier/prettier"
+    ],
+    plugins: [
+        "@typescript-eslint",
+        "sonarjs",
+        "prettier"
+    ],
+    parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: "module",
+    },
+    rules: {
+        "prettier/prettier": 2, // Means error
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/no-var-requires": "warn",
+        "@typescript-eslint/ban-types": "warn",
+        "@typescript-eslint/explicit-module-boundary-types": "warn",
+        "@typescript-eslint/no-inferrable-types": "warn",
+        "sonarjs/no-duplicate-string": ["warn", 3],
+        "sonarjs/cognitive-complexity": ["warn", 15],
+        "sonarjs/no-identical-functions": "warn",
+        "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+        "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+        "prefer-rest-params": "warn",
+        "indent": ["warn", 4],
+        "comma-dangle": ["error", "always-multiline"],
+        "semi": ["error", "always"],
+        "no-trailing-spaces": "error",
+        "no-multi-spaces": "error",
+        "space-in-parens": "error",
+        "no-multiple-empty-lines": "error",
+        "prefer-const": "error",
+        "no-use-before-define": "error",
+        "linebreak-style": 0,
+        "no-underscore-dangle": 0,
+        "unicode-bom": 0,
+        "no-await-in-loop": 0,
+        "no-use-before-define": ["error", { "variables": false }],
+        "no-extend-native": 0,
+        "max-len": 0,
+        "no-empty": 0              
+    },
+};
