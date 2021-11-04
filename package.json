@@ -15,7 +15,9 @@
     "test": "mocha src test",
     "coverage": "yarn lint && nyc mocha src test",
     "develop": "nodemon --ignore '*.json' src/index.ts",
-    "docker": "docker build -t modesl-wrapper -f docker/production/Dockerfile ."
+    "docker": "docker build -t modesl-wrapper -f docker/production/Dockerfile .",
+		"version": "auto-changelog && git add CHANGELOG.md",
+		"postversion": "auto-changelog && git add CHANGELOG.md && git commit --no-edit --amend && git tag -f \"v$(node -e \"console.log(require('./package.json').version)\")\""
   },
     "engines": {
         "node": "*"
@@ -28,7 +30,7 @@
         "url": "https://github.com/matteolc/modesl-wrapper/issues"
     },
   "keywords": ["FreeSWITCH", "ESL", "modesl", "mod_esl"],
-  "author": "Matteo La Cognata",
+  "author": "Matteo La Cognata <matteo.lacognata@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.21",
