@@ -1,6 +1,6 @@
 # FreeSWITCH Mod-ESL Wrapper
 
-The `modesl-wrapper` library provides you with a type-safe wrapper around (https://github.com/englercj/node-esl)[modesl] that allows you to listen on ESL events and log, save to JSON file, and apply your callbacks to selected events. It also provides with few pre-cooked FreeSWITCH background API commands like `reloadxml`, `uuid_kill` and others.
+The `modesl-wrapper` library provides you with a type-safe wrapper around [modesl](https://github.com/englercj/node-esl) that allows you to listen on ESL events and log, save to JSON file, and apply your callbacks to selected events. It also provides with few pre-cooked FreeSWITCH background API commands like `reloadxml`, `uuid_kill` and others.
 
 ## Installation
 
@@ -77,4 +77,4 @@ loglist = [FSEvent.Channel.HANGUP_COMPLETE]
 
 ## License
 
-This library is distributed under the (https://opensource.org/licenses/MIT)[MIT] license.
+This library is distributed under the [MIT](https://opensource.org/licenses/MIT) license.
