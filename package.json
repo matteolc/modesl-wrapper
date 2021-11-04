@@ -2,7 +2,7 @@
   "name": "modesl-wrapper",
   "version": "0.0.1",
   "description": "FreeSWITCH modesl wrapper",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "doc": "typedoc",
     "purge": "rm -rf node_modules yarn.lock && yarn clean",
@@ -17,9 +17,19 @@
     "develop": "nodemon --ignore '*.json' src/index.ts",
     "docker": "docker build -t modesl-wrapper -f docker/production/Dockerfile ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+    "engines": {
+        "node": "*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/matteolc/modesl-wrapper.git"
+    },
+    "bugs": {
+        "url": "https://github.com/matteolc/modesl-wrapper/issues"
+    },
+  "keywords": ["FreeSWITCH", "ESL", "modesl", "mod_esl"],
+  "author": "Matteo La Cognata",
+  "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.21",
     "luxon": "^2.0.2",
@@ -27,29 +37,38 @@
   },
   "devDependencies": {
     "@types/chai": "^4.2.22",
-    "@types/luxon": "^2.0.5",
     "@types/lodash": "^4.14",
+    "@types/luxon": "^2.0.5",
     "@types/mocha": "^9",
     "@types/morgan": "^1.9",
     "@types/node": "^12",
+    "auto-changelog": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/eslint-plugin-tslint": "^5",
     "@typescript-eslint/parser": "^5",
     "chai": "^4",
     "chai-integer": "^0.1.0",
-    "mocha": "^9",
-    "nodemon": "^2",
     "eslint": "^8",
-    "ts-node": "^10",
-    "typedoc": "^0",
-    "typescript": "^4",
-    "source-map-support": "^0",
-    "prettier": "^2",
-    "faker": "^5",
-    "eslint-plugin-sonarjs": "0",
     "eslint-config-prettier": "^8",
     "eslint-plugin-prettier": "^4",
+    "eslint-plugin-sonarjs": "0",
+    "faker": "^5",
+    "mocha": "^9",
+    "nodemon": "^2",
+    "prettier": "^2",
+    "source-map-support": "^0",
+    "ts-node": "^10",
+    "typedoc": "^0",
     "typedoc-neo-theme": "^1",
+    "typescript": "^4",
     "winston": "^3.3.3"
-  }
+  },
+	"auto-changelog": {
+		"output": "CHANGELOG.md",
+		"template": "keepachangelog",
+		"unreleased": false,
+		"commitLimit": false,
+		"backfillLimit": false,
+		"hideCredit": true
+	}
 }
