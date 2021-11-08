@@ -71,8 +71,8 @@ class ESLWrapper {
          * @param provider
          * @returns
          */
-        this.UUIDTransfer = async (uuid, provider) => {
-            return await this.execute(`uuid_transfer ${uuid} -both ${provider}`);
+        this.UUIDTransfer = async (uuid, destexten, context, dialplan = 'XML') => {
+            return await this.execute(`uuid_transfer ${uuid} -both ${destexten} ${dialplan} ${context}`);
         };
         /**
          *
@@ -92,6 +92,14 @@ class ESLWrapper {
          */
         this.UUIDSetvar = async (uuid, variable, value) => {
             return await this.execute(`uuid_setvar ${uuid} ${variable}=${value}`);
+        };
+        /**
+         *
+         * @param ostring
+         * @returns
+         */
+        this.Originate = async (ostring) => {
+            return await this.execute(`originate ${ostring}`);
         };
         /**
          *
