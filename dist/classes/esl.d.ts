@@ -40,7 +40,7 @@ export interface ESLWrapperInterface {
     ReloadXML: () => Promise<string>;
     UUIDGetVar: (u: string, v: string) => Promise<string>;
     UUIDKill: (u: string, v: string) => Promise<string>;
-    UUIDTransfer: (u: string, d: string, c: string, p: string) => Promise<string>;
+    UUIDTransfer: (u: string, d: string, c?: string, p?: string) => Promise<string>;
     UUIDSetvarMulti: (u: string, v: string) => Promise<string>;
     UUIDSetvar: (u: string, k: string, v: string) => Promise<string>;
     Originate: (u: string) => Promise<string>;
@@ -94,7 +94,7 @@ export declare class ESLWrapper implements ESLWrapperInterface {
      * @param provider
      * @returns
      */
-    UUIDTransfer: (uuid: string, destexten: string, context: string, dialplan?: string) => Promise<any>;
+    UUIDTransfer: (uuid: string, destexten: string, dialplan: string, context: string) => Promise<any>;
     /**
      *
      * @param uuid

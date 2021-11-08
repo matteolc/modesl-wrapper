@@ -71,7 +71,7 @@ class ESLWrapper {
          * @param provider
          * @returns
          */
-        this.UUIDTransfer = async (uuid, destexten, context, dialplan = 'XML') => {
+        this.UUIDTransfer = async (uuid, destexten, dialplan, context) => {
             return await this.execute(`uuid_transfer ${uuid} -both ${destexten} ${dialplan} ${context}`);
         };
         /**
