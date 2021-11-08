@@ -94,7 +94,7 @@ export declare class ESLWrapper implements ESLWrapperInterface {
      * @param provider
      * @returns
      */
-    UUIDTransfer: (uuid: string, destexten: string, dialplan: string, context: string) => Promise<any>;
+    UUIDTransfer: (uuid: string, destexten: string, dialplan?: string, context?: string) => Promise<any>;
     /**
      *
      * @param uuid
