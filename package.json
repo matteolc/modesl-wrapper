@@ -1,6 +1,6 @@
 {
   "name": "modesl-wrapper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "FreeSWITCH modesl wrapper",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
