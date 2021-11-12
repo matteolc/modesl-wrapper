@@ -31,12 +31,9 @@ export interface LoggerInterface {
 export interface ESLWrapperOpts {
     logger: LoggerInterface;
     conninfo: ESLConnectionOpts;
-    cblist?: CallBackListInterface[];
-    savelist?: string[];
-    loglist?: string[];
 }
 export interface ESLWrapperInterface {
-    listen: () => Promise<void>;
+    listen: (c?: CallBackListInterface[], s?: string[], l?: string[]) => Promise<void>;
     ReloadXML: () => Promise<string>;
     UUIDGetVar: (u: string, v: string) => Promise<string>;
     UUIDKill: (u: string, v: string) => Promise<string>;
@@ -60,9 +57,6 @@ export declare function createESLWrapper(ctor: ESLWrapperConstructor, opts: ESLW
 export declare class ESLWrapper implements ESLWrapperInterface {
     logger: LoggerInterface;
     conninfo: ESLConnectionOpts;
-    cblist: CallBackListInterface[];
-    savelist: string[];
-    loglist: string[];
     connection: any;
     /**
      *
@@ -73,7 +67,7 @@ export declare class ESLWrapper implements ESLWrapperInterface {
     /**
      *
      */
-    listen: () => Promise<void>;
+    listen: (cblist?: CallBackListInterface[], savelist?: string[], loglist?: string[]) => Promise<void>;
     /**
      *
      * @param uuid
@@ -121,6 +115,30 @@ export declare class ESLWrapper implements ESLWrapperInterface {
      * @returns
      */
     ReloadXML: () => Promise<any>;
+    /**
+     *
+     * @param millis
+     * @returns
+     */
+    MSleep: (millis: number) => Promise<any>;
+    /**
+     *
+     * @param uuid
+     * @returns
+     */
+    UUIDAnswer: (uuid: string) => Promise<any>;
+    /**
+     *
+     * @param uuid
+     * @returns
+     */
+    UUIDRingReady: (uuid: string) => Promise<any>;
+    /**
+     *
+     * @param uuid
+     * @returns
+     */
+    UUIDPreAnswer: (uuid: string) => Promise<any>;
     /**
      *
      * @returns

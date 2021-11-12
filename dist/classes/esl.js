@@ -30,15 +30,14 @@ class ESLWrapper {
         /**
          *
          */
-        this.listen = async () => {
+        this.listen = async (cblist, savelist, loglist) => {
             try {
                 await this.connect();
                 // Subscribe to all FreeSWITCH events
                 this.connection.subscribe(exports.ESLEvent.ALL_EVENTS);
                 this.connection.on(exports.ESLEvent.RECEIVED, (event) => {
                     // A new FreeSWITCH event has been received
-                    // Notify channel manager, no need to wait
-                    (0, modules_1.handleESLEvent)(this.logger, this.cblist, this.savelist, this.loglist, event);
+                    (0, modules_1.handleESLEvent)(this.logger, cblist || [], savelist || [], loglist || [], event);
                 });
             }
             catch (error) {
@@ -110,6 +109,38 @@ class ESLWrapper {
         };
         /**
          *
+         * @param millis
+         * @returns
+         */
+        this.MSleep = async (millis) => {
+            return await this.execute(`msleep ${millis}`, false);
+        };
+        /**
+         *
+         * @param uuid
+         * @returns
+         */
+        this.UUIDAnswer = async (uuid) => {
+            return await this.execute(`uuid_answer ${uuid}`);
+        };
+        /**
+         *
+         * @param uuid
+         * @returns
+         */
+        this.UUIDRingReady = async (uuid) => {
+            return await this.execute(`uuid_ring_ready ${uuid}`);
+        };
+        /**
+         *
+         * @param uuid
+         * @returns
+         */
+        this.UUIDPreAnswer = async (uuid) => {
+            return await this.execute(`uuid_pre_answer ${uuid}`);
+        };
+        /**
+         *
          * @returns
          */
         this.connect = () => new Promise((resolve, reject) => {
@@ -138,10 +169,12 @@ class ESLWrapper {
          * @param cmd
          * @returns
          */
-        this.execute = async (cmd) => {
+        this.execute = async (cmd, async = true) => {
             try {
                 await this.connect();
-                return this.connection.bgapi(cmd, (response) => response.getBody());
+                return async
+                    ? this.connection.bgapi(cmd, (response) => response.getBody())
+                    : this.connection.api(cmd, (response) => response.getBody());
             }
             catch (error) {
                 this.logger.error(error.message);
@@ -150,9 +183,6 @@ class ESLWrapper {
         };
         this.logger = opts.logger;
         this.conninfo = opts.conninfo;
-        this.cblist = opts.cblist || [];
-        this.savelist = opts.savelist || [];
-        this.loglist = opts.loglist || [];
         this.connection = null;
         return this;
     }
