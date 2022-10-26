@@ -1,0 +1,8 @@
+build
+logs
+coverage
+*Dockerfile*
+*docker-compose*
+*.sh
+deploy
+data

@@ -1,0 +1,16 @@
+version: '3'
+services:
+    modesl-wrapper:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: modesl-wrapper
+        command: yarn develop
+        volumes:
+            - ./:/app
+        environment:
+            - NODE_ENV=development
+            - FS_ESL_ADDRESS=$FS_ESL_ADDRESS
+            - FS_ESL_PORT=$FS_ESL_PORT
+            - FS_ESL_SECRET=$FS_ESL_SECRET
+        restart: on-failure

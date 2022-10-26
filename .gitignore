@@ -1,9 +1,3 @@
 node_modules
-data
-src
-test
-.dockerignore
-docker-compose.yml
-Dockerfile
 .env
 *.lock
